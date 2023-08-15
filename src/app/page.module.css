@@ -1,13 +1,13 @@
-* {
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
-body {
-  min-height: 100vh;
+.nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: top;
+  justify-content: space-between;
+  height: 200px;
+}
+.title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
 }
 .board {
   display: grid;
@@ -81,4 +81,52 @@ body {
   font-size: 20px;
   font-weight: 600;
 }
-Step4 — Functionality
+.buttonRow {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.select {
+  margin-bottom: 25px;
+  width: 33%;
+  height: 40px;
+  background-color: #42b4ca;
+  border-radius: 12px;
+  border: 4px solid #97ce4c;
+  font-family: inherit;
+  font-size: larger;
+  font-weight: 500;
+  transition: transform 0.15s;
+  transform-style: preserve-3d;
+}
+.select:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:#42b4ca;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px #225d68, 0 0.5em 0 0 #89e6f9;
+  transform: translate3d(0, 0.75em, -1em);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.select:hover {
+  -webkit-box-shadow: 4px 1px 19px 10px rgba(240, 225, 74, 1);
+  -moz-box-shadow: 4px 1px 19px 10px rgba(240, 225, 74, 1);
+  box-shadow: 4px 1px 19px 10px rgba(240, 225, 74, 1);
+  background: #3998ab;
+  transform: translate(0, 0.25em);
+}
+.select:active {
+  background:  #3998ab;
+  transform: translate(0em, 0.75em);
+}
+.select:active::before {
+  box-shadow: 0 0 0 2px #225d68, 0 0 #ffe3e2;
+  transform: translate3d(0, 0, -1em);
+}
