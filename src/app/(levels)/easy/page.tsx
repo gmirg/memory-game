@@ -1,13 +1,19 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
-import styles from "./page.module.css";
-
+import styles from "../../page.module.css";
+import { randomIds } from "../../utils/randomIds";
+import { getImages } from "../../utils/getImages";
+import { ICharacter } from "../../interfaces/character.interface";
+import Image from "next/image";
+import Bg from "../../../../public/background.svg"
 export default function Easy() {
+  const [board, setBoard] = useState<string[]>([]);
   const [boardData, setBoardData] = useState<string[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+
   useEffect(() => {
     initialize();
   }, []);
@@ -22,8 +28,22 @@ export default function Easy() {
       .map((v) => v);
 
     setBoardData(shuffledCards);
+    console.log(shuffledCards[1])
   };
-  const initialize = () => {
+  const generateBoard = async () => {
+    try {
+      let charactersIds = randomIds(8, 826);
+      let query = charactersIds.join();
+      let charactersInfo = (await getImages(query)) as unknown as ICharacter[]; // Type assertion to not get in trouble with map function
+      let imageUrls = charactersInfo.map((character) => character.image);
+      setBoard(imageUrls)
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  };
+  const initialize = async() => {
+    await generateBoard();
     shuffle();
     setGameOver(false);
     setFlippedCards([]);
@@ -52,7 +72,15 @@ export default function Easy() {
     }
   };
   return (
-    <div className="container">
+    <div className="container" >
+      <Image
+        className={styles.bgImage}
+        src={Bg}
+        alt={"background"}
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+      />
       <div className="menu">
         <p>{`Moves - ${moves}`}</p>
       </div>
@@ -71,7 +99,7 @@ export default function Easy() {
                 matched ? "matched" : ""
               } ${gameOver ? "gameover" : ""}`}
             >
-              <div className="card-front">{data}</div>
+              <div className="card-front" style={{backgroundImage:`url(${data})`}}></div>
               <div className="card-back"></div>
             </div>
           );
@@ -79,7 +107,7 @@ export default function Easy() {
       </div>
       <div className="menu">
         <p>{`GameOver - ${gameOver}`}</p>
-        <button onClick={() => initialize()} className="reset-btn">
+        <button onClick={() => initialize()} className={styles.select}>
           Reset
         </button>
       </div>

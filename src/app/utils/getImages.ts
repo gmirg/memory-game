@@ -1,12 +1,17 @@
-import axios, { AxiosResponse } from 'axios'; 
 
-const apiUrl = 'https://rickandmortyapi.com/api/character/:id'
+import axios, { AxiosResponse } from "axios";
+import { ICharacter } from "../interfaces/character.interface";
 
-export const get = async <T>(url: string): Promise<T> =>
-  fetch(apiUrl + url).then((response) => {
-    if (!response.ok) {
-      throw new Error(response.statusText)
-    }
 
-    return response.json() as Promise<T>
-  })
+
+
+export const getImages = async (query: string) => { // Notice the async keyword here
+  const apiUrl = "https://rickandmortyapi.com/api/character/" + query;
+  try {
+    const response = await axios.get<ICharacter>(apiUrl);
+    return response.data; // Return the fetched data
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error; // Rethrow the error to be caught higher up
+  }
+};

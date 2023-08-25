@@ -1,3 +1,10 @@
+.bgImage {
+  z-index: 0;
+}
+.logo, .title {
+  position: relative;
+  z-index: 1;
+}
 .nav {
   display: flex;
   align-items: top;
@@ -75,6 +82,7 @@
 .menu {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .menu p {
@@ -89,7 +97,7 @@
 }
 .select {
   margin-bottom: 25px;
-  width: 33%;
+  width: 150px;
   height: 40px;
   background-color: #42b4ca;
   border-radius: 12px;

@@ -1,6 +1,6 @@
 import { AnyMxRecord } from "dns";
 import { useEffect, useState } from "react";
-import { Iimages } from "../interfaces/image.interface";
+import { Iimages } from "../interfaces/character.interface";
 
 export const Board = () => {
 const [data, setData] = useState<string[]>([]);
