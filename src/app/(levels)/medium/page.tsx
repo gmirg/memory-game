@@ -7,11 +7,10 @@ import { ICharacter } from "../../interfaces/character.interface";
 import Image from "next/image";
 import Bg from "../../../../public/background.svg"
 import Arrow from "../../../../public/arrow.svg"
-import Loading from "../../../../public/portal-rick-and-morty.gif"
 import Link from "next/link";
 
 
-export default function Easy() {
+export default function Medium() {
   const [board, setBoard] = useState<string[]>([]);
   const [boardData, setBoardData] = useState<string[]>([]);
   const [start,setStart]= useState(false)
@@ -24,14 +23,14 @@ export default function Easy() {
     initialize();
   }, [start]);
   useEffect(() => {
-    if (matchedCards.length == 16) {
+    if (matchedCards.length == 24) {
       setGameOver(true);
     }
   }, [moves]);
   
   const generateBoard = async () => {
     try {
-      let charactersIds = randomIds(8, 826);
+      let charactersIds = randomIds(12, 826);
       let query = charactersIds.join();
       let charactersInfo = (await getImages(query)) as unknown as ICharacter[]; // Type assertion to not get in trouble with map function
       let imageUrls = charactersInfo.map((character) => character.image);
@@ -97,7 +96,8 @@ export default function Easy() {
 
       <div className="board">
         
-        {boardData.map((data, i) => {
+        {
+        boardData.map((data, i) => {
           const flipped = flippedCards.includes(i) ? true : false;
           const matched = matchedCards.includes(i) ? true : false;
           return (

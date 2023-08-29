@@ -1,5 +1,5 @@
 'use client'
-import styles from "../page.module.css"
+import styles from "../"
 import Image from "next/image";
 import Logo from "../../../public/logo.svg";
 import { useRouter } from 'next/navigation'
@@ -14,8 +14,8 @@ const Index = () => {
       <h1 className={styles.title}>Memory game</h1>
       <div className={styles.buttonRow}>
         <button className={styles.select} type="button" onClick={() => router.push('/easy')}>Easy</button>
-        <button className={styles.select} type="button">Medium</button>
-        <button className={styles.select} type="button">Hard</button>
+        <button className={styles.select} type="button" onClick={() => router.push('/medium')}>Medium</button>
+        <button className={styles.select} type="button" onClick={() => router.push('/hard')}>Hard</button>
         <button className={styles.select} type="button">Custom</button>
       </div>
     </div>
