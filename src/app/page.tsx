@@ -24,7 +24,7 @@ export default function Home() {
         <button className={styles.select} type="button" onClick={() => router.push('/easy')}>Easy</button>
         <button className={styles.select} type="button" onClick={() => router.push('/medium')}>Medium</button>
         <button className={styles.select} type="button" onClick={() => router.push('/hard')}>Hard</button>
-        <button className={styles.select} type="button">Custom</button>
+        {/* <button className={styles.select} type="button">Custom</button> */}
       </div>
     </div>
       <div className={styles.board}></div>
