@@ -38,7 +38,7 @@ pnpm dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Enjoy playing the Memory Game with Rick and Morty Characters! If you have any questions or suggestions, feel free to contact us or open an issue. Happy matching in the multiverse! 🎮👾
+Enjoy playing the Memory Game with Rick and Morty Characters! If you have any questions or suggestions, feel free to contact me or open an issue. Happy matching in the multiverse! 🎮👾
 
 ## Credits
 Based on @CodeWithMarish code
